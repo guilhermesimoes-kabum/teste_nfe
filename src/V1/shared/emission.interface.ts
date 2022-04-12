@@ -1,5 +1,5 @@
-import {ResponseEmission} from "../adapter/responseEmission";
+import {ResponseIssuer} from "../adapter/responseEmission";
 
-export interface EmissionInterface {
-	sendInvoicy() : Promise<ResponseEmission>;
+export interface IssuerInterface {
+	sendInvoicy() : Promise<ResponseIssuer>;
 }

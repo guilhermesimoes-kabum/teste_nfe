@@ -10,17 +10,17 @@ import {ParameterToEmissionStub} from "./ParametersToEmissionStub";
 describe('NFeSaleService', () => {
 	let service: NFeSaleService;
 	let repositoryNFe: NFeInterfaceRepository;
-	let repositoryPedido: OrderInterfaceRepository;
+	let orderRepository: OrderInterfaceRepository;
 	let emissior: EmissionInterface;
 	let parameterToEmission:  ParametersToEmission;
 
 	beforeEach(async () => {
 		repositoryNFe = {alreadyContainsNfeIssued : jest.fn(() => { return false })};
-		repositoryPedido = {findById : jest.fn(() => { return new OrderDTO })};
+		orderRepository = {findById : jest.fn(() => { return new OrderDTO })};
 		emissior = {sendInvoicy : jest.fn(() => { return new Promise(function(){}) })};
 
 		parameterToEmission = ParameterToEmissionStub.get(); 
-		service = new NFeSaleService(repositoryNFe, repositoryPedido, emissior);
+		service = new NFeSaleService(repositoryNFe, orderRepository, emissior);
 	});
 
 	describe('NFeSalesService', () => {
@@ -34,8 +34,8 @@ describe('NFeSaleService', () => {
 
 		test('returns throw if we have already issued the invoicy', () => {
 			const repositoryNFeThrow: NFeInterfaceRepository = { alreadyContainsNfeIssued : jest.fn(() => { return true })};
-			const serviceThrow = new NFeSaleService(repositoryNFeThrow, repositoryPedido, emissior);
-			expect(serviceThrow.issueSalesInvoicy("")).resolves.not.toThrow();
+			const serviceThrow = new NFeSaleService(repositoryNFeThrow, orderRepository, emissior);
+			expect(serviceThrow.issueSalesInvoicy("")).resolves.toThrow();
 		})
 	}); 
 

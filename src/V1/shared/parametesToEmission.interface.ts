@@ -93,18 +93,18 @@ class Item {
 	orig_cst_fornecedor: Number;
 }
 
-class DeliveryCity {
+export interface DeliveryCity {
 	estado: String;
 	cidade: String;
 	ibge:  Number;
 }
 
-export class ParametersToEmission {
+export interface ParametersToIssuer {
 	order: Order;
 	issuer: CD;
-	shipping_company: ShippingCompany;
+	shippingCompany: ShippingCompany;
 	client: Client;
 	transfer: Boolean;
 	items: Array<Item>;
-	delivery_city: DeliveryCity;
+	deliveryCity: DeliveryCity;
 }
