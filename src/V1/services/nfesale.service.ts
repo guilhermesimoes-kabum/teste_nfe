@@ -24,6 +24,13 @@ export class NFeSaleService {
 			order, 
 		} as ParametersToIssuer;
 
-		return this.emissor.sendInvoicy();
+		return parameterToEmission;
+	}
+
+	checkIfAlreadyExistsInvoicyIssued(order: Order) {
+		const alreadyContainsNfeIssued = this.repositoryNFe.alreadyContainsNfeIssued(order.codigo);
+		if(alreadyContainsNfeIssued) {
+			throw new Error;
+		}
 	}
 }
