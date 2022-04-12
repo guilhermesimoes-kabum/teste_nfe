@@ -1,10 +1,9 @@
 import {NFeSaleService} from "src/V1/services/nfesale.service";
-import {ParametersToEmission} from "src/V1/shared/parametesToEmission.interface";
-import {ResponseEmission} from "../adapter/responseEmission";
 import {EmissionInterface} from "../shared/emission.interface";
 import {NFeInterfaceRepository} from "../shared/nfe.interface.repository";
 import {OrderDTO} from "../shared/order.dto";
 import {OrderInterfaceRepository} from "../shared/order.interface.repository";
+import {ParametersToEmission} from "../shared/parametesToEmission.interface";
 import {ParameterToEmissionStub} from "./ParametersToEmissionStub";
 
 describe('NFeSaleService', () => {
