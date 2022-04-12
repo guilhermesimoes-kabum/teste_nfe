@@ -36,6 +36,10 @@ describe('NFeSaleService', () => {
 			const serviceThrow = new NFeSaleService(repositoryNFeThrow, orderRepository, emissior);
 			expect(serviceThrow.issueSalesInvoicy("")).resolves.toThrow();
 		})
-	}); 
+
+		test('returns parameter to emission', () => {
+			expect(service.getInformationOrderToInvoicy("")).toBe(parameterToEmission);
+		});
+	});
 
 });
