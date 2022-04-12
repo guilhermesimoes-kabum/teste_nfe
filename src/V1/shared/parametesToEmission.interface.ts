@@ -103,7 +103,6 @@ export interface ParametersToIssuer {
 	issuer: CD;
 	shippingCompany: ShippingCompany;
 	client: Client;
-	transfer: Boolean;
 	items: Array<Item>;
 	deliveryCity: DeliveryCity;
 }

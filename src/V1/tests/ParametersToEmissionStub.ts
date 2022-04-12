@@ -71,7 +71,6 @@ export class ParameterToEmissionStub {
 				"cliente_telefone_02" : 18988181150,
 				"cliente_credito": 0.00
 			},
-			"transfer": false,
 			"items": [ 
 				{
 				    "item_quantidade": 1,
