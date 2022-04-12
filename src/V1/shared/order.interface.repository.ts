@@ -1,5 +1,6 @@
-import {OrderDTO} from "./order.dto";
+import {Item, Order} from "./parametesToEmission.interface";
 
 export interface OrderInterfaceRepository {
-	findById(id_pedido: string) : OrderDTO;
+	findOrderToIssuerById(codigo: string) : Order;
+	getItemsOfTheOrderToIssuer(idOrder: string) : Array<Item>;
 }
