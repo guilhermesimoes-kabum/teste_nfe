@@ -1,5 +1,4 @@
-
-class Order {
+export interface Order {
 	codigo: Number;
 	data_garantia: Number;
 	cd_codigo: Number;
@@ -27,7 +26,7 @@ class Order {
 	pagamento_categoria: String;
 }
 
-class CD {
+export interface CD {
    cnpj : String;
    referencia : String;
    emissao_por_filial_virtual? :  Boolean;
@@ -45,7 +44,7 @@ class CD {
    IEST: Number
 }
 
-class Client {
+export interface Client {
 	codigo : Number;
 	data : Number;
 	loja_codigo : Number;
@@ -62,7 +61,7 @@ class Client {
 	cliente_credito : Number;
 }
 
-class ShippingCompany {
+export interface ShippingCompany {
 	ie?: Number;
 	observacaoNF?: String;
 	cep?: String;
@@ -71,7 +70,7 @@ class ShippingCompany {
 	razaoSocial?: String;
 }
 
-class Item {
+export interface Item {
     item_quantidade : Number;
     produto_codigo : Number;
     produto_nome_nfe : String;
