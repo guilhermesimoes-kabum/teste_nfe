@@ -40,8 +40,8 @@ export class NFeSaleService {
 		return parameterToEmission;
 	}
 
-	checkIfAlreadyExistsInvoicyIssued(order: Order) {
-		const alreadyContainsNfeIssued = this.repositoryNFe.alreadyContainsNfeIssued(order.codigo);
+	checkIfAlreadyExistsInvoicyIssued(orderCode: Number) {
+		const alreadyContainsNfeIssued = this.nfeRepository.alreadyContainsNfeIssued(orderCode);
 		if(alreadyContainsNfeIssued) {
 			throw new Error;
 		}
