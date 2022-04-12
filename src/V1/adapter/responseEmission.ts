@@ -1,0 +1,8 @@
+export class ResponseEmission {
+	xml_link : string;
+	pdf_link : string;
+	xml_base64 : string;	
+	pdf_base64 : string;	
+	statusCode : number;
+	mensagem : string;
+}
