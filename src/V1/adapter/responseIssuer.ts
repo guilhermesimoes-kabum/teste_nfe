@@ -1,4 +1,4 @@
-export class ResponseEmission {
+export class ResponseIssuer {
 	xml_link : string;
 	pdf_link : string;
 	xml_base64 : string;	
