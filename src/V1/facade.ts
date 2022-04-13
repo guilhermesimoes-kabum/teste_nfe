@@ -1,21 +1,33 @@
-import {ResponseEmission} from "./adapter/responseEmission";
+import {ResponseIssuer} from "./adapter/responseIssuer";
 import {Invoicy} from "./invoicy/invoicy";
+import {ClientRepository} from "./repositories/client.repository";
+import {DeliveryCityRepository} from "./repositories/deliveryCity.repository";
+import {IssuerRepository} from "./repositories/issuer.repository";
 import {NFeSaleRepository} from "./repositories/nfesale.repository";
 import {OrderRepository} from "./repositories/order.repository";
+import {ShippingCompanyRepository} from "./repositories/shippingCompany.repository";
 import {NFeSaleService} from "./services/nfesale.service";
 
 export class Facade {
-	private nfe_repository : NFeSaleRepository;
-	private pedido_repository : OrderRepository;
-	private emissor : Invoicy;
+	private nfeRepository : NFeSaleRepository;
+	private orderRepository : OrderRepository;
+	private issuer : Invoicy;
+	private deliveryCityRepository : DeliveryCityRepository;
+	private issuerRepository : IssuerRepository;
+	private shippingCompanyRepository : ShippingCompanyRepository;
+	private clientRepository : ClientRepository;
+
 	constructor() {
-		this.nfe_repository = new NFeSaleRepository();
-		this.pedido_repository = new OrderRepository();
-		this.emissor = new Invoicy();
+		this.nfeRepository = new NFeSaleRepository();
+		this.orderRepository = new OrderRepository();
+		this.issuer = new Invoicy();
 	}
-	
-	issueSalesInvoicy(id_pedido: string) : Promise<ResponseEmission>{
-		const service = new NFeSaleService(this.nfe_repository, this.pedido_repository, this.emissor);
+
+	issueSalesInvoicy(id_pedido: string) : Promise<ResponseIssuer>{
+		const service = new NFeSaleService(
+			this.nfeRepository, this.orderRepository, this.issuer, this.deliveryCityRepository,
+			this.issuerRepository, this.shippingCompanyRepository, this.clientRepository
+		);
 		return service.issueSalesInvoicy(id_pedido);
 	}
 }
