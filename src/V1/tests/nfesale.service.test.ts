@@ -23,17 +23,19 @@ describe('NFeSaleService', () => {
 	beforeEach(async () => {
 		parameterToIssuer = ParameterToIssueStub.get(); 
 		repositoryNFe = {alreadyContainsNfeIssued : jest.fn(() => { return false })};
-		orderRepository = {
-			findOrderToIssuerById : jest.fn(() => { return {} as Order }),
-			getItemsOfTheOrderToIssuer : jest.fn(() => { return [] })
-		};
-		issuer = {sendInvoicy : jest.fn(() => { return new Promise(function(){}) })};
-		deliveryCityRepository = { findDeliveryCityToIssuer : jest.fn(() => { return {} as DeliveryCity }) };
-	    issuerRepository = { findByCDcodeToIssuerInvoicy : jest.fn(() => { return {} as CD }) };
-	    shippingCompanyRepository = { findByCodeFreightToIssuer : jest.fn(() => { return {} as ShippingCompany }) };
-		clientRepository = { findByClientIdToIssuer : jest.fn(() => { return {} as Client }) }; 
 
-		//parameterToIssuer = ParameterToIssueStub.get(); 
+		orderRepository = {
+			findOrderToIssuerById : jest.fn(() => { return parameterToIssuer.order as Order }),
+			getItemsOfTheOrderToIssuer : jest.fn(() => { return parameterToIssuer.items })
+		};
+
+		issuer = {sendInvoicy : jest.fn(() => { return new Promise(function(){}) })};
+
+		deliveryCityRepository = { findDeliveryCityToIssuer : jest.fn(() => { return parameterToIssuer.deliveryCity as DeliveryCity }) };
+	    issuerRepository = { findByCDcodeToIssuerInvoicy : jest.fn(() => { return parameterToIssuer.issuer as CD }) };
+	    shippingCompanyRepository = { findByCodeFreightToIssuer : jest.fn(() => { return parameterToIssuer.shippingCompany as ShippingCompany }) };
+		clientRepository = { findByClientIdToIssuer : jest.fn(() => { return parameterToIssuer.client as Client }) }; 
+
 		service = new NFeSaleService(repositoryNFe, orderRepository, issuer, deliveryCityRepository, issuerRepository, shippingCompanyRepository, clientRepository);
 	});
 
@@ -44,13 +46,13 @@ describe('NFeSaleService', () => {
 
 		test('should not return throw', () => {
 			expect(service.issueSalesInvoicy("")).resolves.not.toThrow();
-		})
+		}); 
 
 		test('returns throw if we have already issued the invoicy', () => {
 			const repositoryNFeThrow: NFeInterfaceRepository = { alreadyContainsNfeIssued : jest.fn(() => { return true })};
 			const serviceThrow = new NFeSaleService(repositoryNFeThrow, orderRepository, issuer, deliveryCityRepository, issuerRepository, shippingCompanyRepository, clientRepository);
-			expect(serviceThrow.issueSalesInvoicy("")).resolves.toThrow();
-		})
+			expect(serviceThrow.issueSalesInvoicy("")).rejects.toThrow();
+		}); 
 
 		test('returns parameter to emission', () => {
 			expect(service.getInformationOrderToInvoicy("")).toStrictEqual(parameterToIssuer as ParametersToIssuer);
