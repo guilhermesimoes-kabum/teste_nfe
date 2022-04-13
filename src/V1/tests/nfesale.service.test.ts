@@ -7,6 +7,7 @@ import {NFeInterfaceRepository} from "../shared/nfe.interface.repository";
 import {OrderInterfaceRepository} from "../shared/order.interface.repository";
 import {CD, Client, DeliveryCity, Order, ParametersToIssuer, ShippingCompany} from "../shared/parametersToIssuer.interface";
 import {ShippingCompanyInterfaceRepository} from "../shared/shippingCompany.interface.repository";
+import {ParameterToIssueStub} from "./ParametersToIssueStub";
 
 describe('NFeSaleService', () => {
 	let service: NFeSaleService;
@@ -20,6 +21,7 @@ describe('NFeSaleService', () => {
 	let clientRepository : ClientInterfaceRepository; 
 
 	beforeEach(async () => {
+		parameterToIssuer = ParameterToIssueStub.get(); 
 		repositoryNFe = {alreadyContainsNfeIssued : jest.fn(() => { return false })};
 		orderRepository = {
 			findOrderToIssuerById : jest.fn(() => { return {} as Order }),
@@ -50,9 +52,9 @@ describe('NFeSaleService', () => {
 			expect(serviceThrow.issueSalesInvoicy("")).resolves.toThrow();
 		})
 
-		//test('returns parameter to emission', () => {
-		//	expect(service.getInformationOrderToInvoicy("")).toBe(parameterToIssuer);
-		//});
+		test('returns parameter to emission', () => {
+			expect(service.getInformationOrderToInvoicy("")).toStrictEqual(parameterToIssuer as ParametersToIssuer);
+		});
 	});
 
 });
