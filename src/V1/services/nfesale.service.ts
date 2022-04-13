@@ -1,11 +1,11 @@
-import {ResponseEmission} from "../adapter/responseEmission";
+import {ResponseIssuer} from "../adapter/responseIssuer";
 import {ClientInterfaceRepository} from "../shared/client.interface.repository";
 import {DeliveryCityInterfaceRepository} from "../shared/deliveryCity.interface.repository";
-import {IssuerInterface} from "../shared/emission.interface";
+import {IssuerInterface} from "../shared/issuer.interface";
 import {IssuerInterfaceRepository} from "../shared/issuer.interface.repository";
 import {NFeInterfaceRepository} from "../shared/nfe.interface.repository";
 import {OrderInterfaceRepository} from "../shared/order.interface.repository";
-import {ParametersToIssuer} from "../shared/parametesToEmission.interface";
+import {ParametersToIssuer} from "../shared/parametersToIssuer.interface";
 import {ShippingCompanyInterfaceRepository} from "../shared/shippingCompany.interface.repository";
 
 export class NFeSaleService {
@@ -19,7 +19,7 @@ export class NFeSaleService {
 		private clientRepository : ClientInterfaceRepository
 	) {}
 
-	async issueSalesInvoicy(idOrder: string) : Promise<ResponseEmission> {
+	async issueSalesInvoicy(idOrder: string) : Promise<ResponseIssuer> {
 		const informationOrderToInvoicy = this.getInformationOrderToInvoicy(idOrder);
 		return this.issuer.sendInvoicy();
 	}

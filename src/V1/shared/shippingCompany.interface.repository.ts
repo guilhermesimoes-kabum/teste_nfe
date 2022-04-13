@@ -1,4 +1,4 @@
-import {ShippingCompany} from "./parametesToEmission.interface";
+import {ShippingCompany} from "./parametersToIssuer.interface";
 
 export interface ShippingCompanyInterfaceRepository {
 	findByCodeFreightToIssuer(codeFreight: Number) : ShippingCompany;

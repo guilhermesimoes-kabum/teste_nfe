@@ -1,4 +1,4 @@
-import {DeliveryCity} from "./parametesToEmission.interface";
+import {DeliveryCity} from "./parametersToIssuer.interface";
 
 export interface DeliveryCityInterfaceRepository {
 	findDeliveryCityToIssuer(codigo: Number) : DeliveryCity;

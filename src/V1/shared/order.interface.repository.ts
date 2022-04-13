@@ -1,4 +1,4 @@
-import {Item, Order} from "./parametesToEmission.interface";
+import {Item, Order} from "./parametersToIssuer.interface";
 
 export interface OrderInterfaceRepository {
 	findOrderToIssuerById(codigo: string) : Order;
