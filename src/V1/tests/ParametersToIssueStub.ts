@@ -35,7 +35,7 @@ export class ParameterToIssueStub {
 			   "referencia": "CD - VIANA (ES)",
 			   "emissao_por_filial_virtual" : false,
 			   "filial_vitual" : null,
-			   "IE": 083078665,
+			   "IE": "083078665",
 			   "IM" : 21699,
 			   "LOGRADOURO": "ROD BR-262",
 			   "NUMERO": 222,
@@ -45,10 +45,10 @@ export class ParameterToIssueStub {
 			   "MUNICIPIO_NOME": "VIANA",
 			   "UF": "ES",
 			   "CEP": 29136010, 
-			   "IEST": 0808010466118
+			   "IEST": "0808010466118"
 			},
 			"shippingCompany": {
-				"ie": 165460600113,
+				"ie": "165460600113",
 				"observacaoNF": "RESPONSAVEL: LOCAL ENTREGA: GFL, CNPJ: 23.820.639/0001-19,  Estra Guarulhos-Sao Miguel Velha, 0, Terminal Interm. de cargas, Vila Nova Cumbica - Guarulhos SP/SP - Mediante contrato: 9912323353",
 				"cep": "05346000", 
 				"fantasia": "GFL",

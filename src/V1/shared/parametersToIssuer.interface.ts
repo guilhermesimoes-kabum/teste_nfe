@@ -27,21 +27,21 @@ export interface Order {
 }
 
 export interface CD {
-   cnpj : String;
-   referencia : String;
-   emissao_por_filial_virtual? :  Boolean;
-   filial_vitual? : Number;
-   IE : Number;
-   IM? : Number;
-   LOGRADOURO : String;
-   NUMERO : Number;
-   COMPLEMENTO : String;
-   BAIRRO : String;
-   MUNICIPIO_CODIGO : Number;
-   MUNICIPIO_NOME : String;
-   UF : String;
-   CEP : Number;
-   IEST: Number
+    cnpj : String;
+    referencia : String;
+    emissao_por_filial_virtual? :  Boolean;
+    filial_vitual? : Number;
+    IE : String;
+    IM? : Number;
+    LOGRADOURO : String;
+    NUMERO : Number;
+    COMPLEMENTO : String;
+    BAIRRO : String;
+    MUNICIPIO_CODIGO : Number;
+    MUNICIPIO_NOME : String;
+    UF : String;
+    CEP : Number;
+	IEST: String; 
 }
 
 export interface Client {
@@ -62,7 +62,7 @@ export interface Client {
 }
 
 export interface ShippingCompany {
-	ie?: Number;
+	ie?: String;
 	observacaoNF?: String;
 	cep?: String;
 	fantasia?: String;
