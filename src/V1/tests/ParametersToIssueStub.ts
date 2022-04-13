@@ -1,7 +1,7 @@
-import {ParametersToEmission} from "src/V1/shared/parametesToEmission.interface"
+import {ParametersToIssuer} from "../shared/parametersToIssuer.interface";
 
-export class ParameterToEmissionStub {
-	static get(): ParametersToEmission {
+export class ParameterToIssueStub {
+	static get(): ParametersToIssuer {
 		return {
 			"order": {
 				"codigo": 28220798,
@@ -47,7 +47,7 @@ export class ParameterToEmissionStub {
 			   "CEP": 29136010, 
 			   "IEST": 0808010466118
 			},
-			"shipping_company": {
+			"shippingCompany": {
 				"ie": 165460600113,
 				"observacaoNF": "RESPONSAVEL: LOCAL ENTREGA: GFL, CNPJ: 23.820.639/0001-19,  Estra Guarulhos-Sao Miguel Velha, 0, Terminal Interm. de cargas, Vila Nova Cumbica - Guarulhos SP/SP - Mediante contrato: 9912323353",
 				"cep": "05346000", 
@@ -94,7 +94,7 @@ export class ParameterToEmissionStub {
 					"orig_cst_fornecedor": 1 
 				}
 			],
-			"delivery_city": {
+			"deliveryCity": {
 				"estado": "SP",
 				"cidade": "Limeira",
 				"ibge": 3526902
