@@ -1,8 +1,13 @@
-import {OrderDTO} from "../shared/order.dto";
 import {OrderInterfaceRepository} from "../shared/order.interface.repository";
+import {Item, Order} from "../shared/parametersToIssuer.interface";
 
 export class OrderRepository implements OrderInterfaceRepository {
-	findById(id_pedido: string): OrderDTO {
-		return new OrderDTO;
+
+	findOrderToIssuerById(codigo: string): Order {
+		return {} as Order;
 	}
+
+	 getItemsOfTheOrderToIssuer(idOrder: string): Item[] {
+	 	return [ {} as Item ];
+	 }
 }
