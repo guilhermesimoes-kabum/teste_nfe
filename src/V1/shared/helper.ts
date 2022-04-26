@@ -53,6 +53,6 @@ export abstract class Helper {
 	public static getNatOp(initials: String) : any {
 		type ObjectKey = keyof typeof Helper.NAT_OP;
 		const myIndexVar = initials as ObjectKey;
-		return Helper.CODE_STATE[myIndexVar];
+		return Helper.NAT_OP[myIndexVar];
 	}
 }
