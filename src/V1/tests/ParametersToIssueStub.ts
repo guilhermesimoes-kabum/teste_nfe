@@ -98,7 +98,11 @@ export class ParameterToIssueStub {
 				"estado": "SP",
 				"cidade": "Limeira",
 				"ibge": 3526902
-			}
+			}, 
+			"serie": 1,
+			"nNF": 10,
+			"debug": true,
+			"typeOperation": 1,
 		}
 	}
 }

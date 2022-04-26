@@ -105,4 +105,8 @@ export interface ParametersToIssuer {
 	client: Client;
 	items: Array<Item>;
 	deliveryCity: DeliveryCity;
+	serie: Number;
+	nNF: Number;
+	debug: boolean;
+	typeOperation : Number;
 }
