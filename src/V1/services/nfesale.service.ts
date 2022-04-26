@@ -32,9 +32,13 @@ export class NFeSaleService {
 		const shippingCompany = this.shippingCompanyRepository.findByCodeFreightToIssuer(order.frete_codigo);
 		const client = this.clientRepository.findByClientIdToIssuer(order.id_cliente);
 		const items = this.orderRepository.getItemsOfTheOrderToIssuer(idOrder);
+		const serie = 1;
+		const nNF = this.nfeRepository.getNumber(order.cd_codigo, serie);
+		const debug = true;
+		const typeOperation = 1;
 
 		const parameterToEmission = {
-			order, deliveryCity, issuer, shippingCompany, client,  items 
+			order, deliveryCity, issuer, shippingCompany, client,  items, nNF, serie, debug, typeOperation 
 		} as ParametersToIssuer;
 
 		return parameterToEmission;
