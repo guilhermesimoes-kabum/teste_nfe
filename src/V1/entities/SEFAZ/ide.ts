@@ -9,27 +9,27 @@ export class ide {
 		this.buildIDE();
 	}
 
-	cUF      : Number;
-    cNF      : Number;
-    natOp 	 : String;
-    indPag 	 : Number;
-    mod 	 : Number;
-    serie 	 : Number;
-    nNF 	 : Number;
-    dhEmi 	 : String;
-    dhSaiEnt?: String;
-    tpNF 	 : Number;
-    idDest 	 : Number;
-    cMunFG 	 : Number;
-    tpImp 	 : Number;
-    tpEmis 	 : Number;
-    cDV 	 : Number;
-    tpAmb 	 : Number;
-    finNFe 	 : Number;
-    indFinal : Number;
-    indPres  : Number;
-    procEmi  : Number;
-    verProc  : String;
+	public cUF : UsignedInt<10>;
+    public cNF : Number;
+    public natOp : String;
+    public indPag : Number;
+    public mod : Number;
+    public serie : Number;
+    public nNF : Number;
+    public dhEmi : String;
+    public dhSaiEnt?: String;
+    public tpNF : Number;
+    public idDest : Number;
+    public cMunFG : Number;
+    public tpImp : Number;
+    public tpEmis : Number;
+    public cDV : Number;
+    public tpAmb : Number;
+    public finNFe : Number;
+    public indFinal : Number;
+    public indPres : Number;
+    public procEmi : Number;
+    public verProc : String;
 
 	buildIDE() {
 		this.cUF = Helper.getCodeState(this.parameterToIssuer.issuer.UF);
