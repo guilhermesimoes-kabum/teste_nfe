@@ -1,4 +1,4 @@
-import {Helper} from "src/V1/shared/helper";
+import {Helper} from "../../shared/helper";
 import {ParametersToIssuer} from "src/V1/shared/parametersToIssuer.interface";
 
 export class ide {

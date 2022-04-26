@@ -57,7 +57,5 @@ describe('NFeSaleService', () => {
 		test('returns parameter to emission', () => {
 			expect(service.getInformationOrderToInvoicy("")).toStrictEqual(parameterToIssuer as ParametersToIssuer);
 		});
-
 	});
-
 });
