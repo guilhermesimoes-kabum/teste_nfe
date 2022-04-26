@@ -22,7 +22,10 @@ describe('NFeSaleService', () => {
 
 	beforeEach(async () => {
 		parameterToIssuer = ParameterToIssueStub.get(); 
-		repositoryNFe = {alreadyContainsNfeIssued : jest.fn(() => { return false })};
+		repositoryNFe = {
+			alreadyContainsNfeIssued : jest.fn(() => { return false }),
+			getNumber : jest.fn(() => { return 10 })
+		};
 
 		orderRepository = {
 			findOrderToIssuerById : jest.fn(() => { return parameterToIssuer.order as Order }),
@@ -49,7 +52,10 @@ describe('NFeSaleService', () => {
 		}); 
 
 		test('returns throw if we have already issued the invoicy', () => {
-			const repositoryNFeThrow: NFeInterfaceRepository = { alreadyContainsNfeIssued : jest.fn(() => { return true })};
+			const repositoryNFeThrow: NFeInterfaceRepository = { 
+				alreadyContainsNfeIssued : jest.fn(() => { return true }), 
+				getNumber : jest.fn(() => { return 10 })
+			};
 			const serviceThrow = new NFeSaleService(repositoryNFeThrow, orderRepository, issuer, deliveryCityRepository, issuerRepository, shippingCompanyRepository, clientRepository);
 			expect(serviceThrow.issueSalesInvoicy("")).rejects.toThrow();
 		}); 
