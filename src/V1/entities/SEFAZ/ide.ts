@@ -39,10 +39,10 @@ export class ide {
 		this.mod = Helper.DOCUMENT_TEMPLATE;
 		this.serie = this.parameterToIssuer.serie;
 		this.nNF = this.parameterToIssuer.nNF;
-		this.dhEmi = this.currentDate();
-		this.tpNF = this.parameterToIssuer.type_invoicy;
+		this.dhEmi = this.dateFormat(new Date());
+		this.tpNF = this.parameterToIssuer.typeOperation;
 
-		const saleWithinTheState = this.parameterToIssuer.issuer.UF == this.parameterToIssuer.deliveryCity.estado; 
+		const saleWithinTheState = this.parameterToIssuer.issuer.UF == this.parameterToIssuer.deliveryCity.estado;
 
 		this.idDest = saleWithinTheState ? 1 : 2; 
 		this.cMunFG = this.parameterToIssuer.issuer.MUNICIPIO_CODIGO;
@@ -57,8 +57,7 @@ export class ide {
 		this.verProc = Helper.VERSION_OF_THE_ISSUANCE_PROCESS;
 	}
 
-	currentDate() : String {
-		const now = new Date();
+	dateFormat(now : Date) : String {
 		const isoStrDate = now.toISOString();
 		let strDateFormat = isoStrDate.split(".")[0];
 		strDateFormat += "-03:00";
