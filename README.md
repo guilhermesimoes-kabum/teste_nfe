@@ -39,4 +39,4 @@ $ npm run test:cov
 
 ## Author 
 
-- Author - [Guilherme Giácomo Simões](https://github.com/guilhermesimoes-kabum) [Ana Paula] (https://github.com/anapaulakabum/)
+- Author - [Guilherme Giácomo Simões](https://github.com/guilhermesimoes-kabum) [Ana Paula](https://github.com/anapaulakabum/)
