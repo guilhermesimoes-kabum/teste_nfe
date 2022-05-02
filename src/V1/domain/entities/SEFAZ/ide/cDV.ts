@@ -1,13 +1,16 @@
 
 
-export class cDV {
-	constructor(private DV : Number) {
-		this.validity()
+export abstract class cDV {
+	static validity(DV : Number) : Boolean {
+		return Number.isInteger(DV)
+			&& DV > 0
+			&& DV < 10;
 	}
 
-	validity() : Boolean {
-		return Number.isInteger(this.DV)
-			&& this.DV > 0
-			&& this.DV < 10;
+	static get(dv : Number) : Number {
+		if(cDV.validity(dv)) {
+			return dv;
+		}
+		throw new Error();
 	}
 }

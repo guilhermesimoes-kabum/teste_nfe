@@ -1,18 +1,14 @@
-export class cUF {
-
-	constructor(
-		private cUF : Number
-	) {
-		const result = this.validity();
+export abstract class cUF {
+	static validity(stateCode: Number) : Boolean {
+		return Number.isInteger(stateCode) 
+			&& stateCode < 100
+			&& stateCode > 0; 
 	}
 
-	validity() : Boolean {
-		return Number.isInteger(this.cUF) 
-			&& this.cUF < 100
-			&& this.cUF > 0; 
-	}
-
-	get() {
-		return this.cUF;
+	static get(stateCode: Number) {
+		if(cUF.validity(stateCode)) {
+			return stateCode;
+		}
+		throw new Error();
 	}
 }

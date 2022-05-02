@@ -1,12 +1,15 @@
 
 export class serie {
-	constructor(private serie : Number) {
-		const result = this.validity();	
+	static get(series : Number) : Number{
+		if(serie.validity(series)) {
+			return series
+		}
+		throw new Error();
 	}
 
-	validity() : Boolean {
-		return Number.isInteger(this.serie)
-			&& this.serie < 1000 
-			&& this.serie > 0;
+	static validity(series : Number) : Boolean {
+		return Number.isInteger(series)
+			&& series < 1000 
+			&& series > 0;
 	}
 }

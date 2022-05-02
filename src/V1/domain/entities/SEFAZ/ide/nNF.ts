@@ -1,12 +1,15 @@
 
-export class nNF {
-	constructor(private number : Number) {
-		const result = this.validity();
+export abstract class nNF {
+	static get(number : Number) : Number {
+		if(nNF.validity(number)) {
+			return number;
+		}
+		throw new Error();
 	}
 
-	validity() : Boolean {
-		return Number.isInteger(this.number)
-			&& this.number > 0
-			&& this.number < 1000000000;
+	static validity(number: Number) : Boolean {
+		return Number.isInteger(number)
+			&& number > 0
+			&& number < 1000000000;
 	}
 }

@@ -30,37 +30,37 @@ export class ide {
 		this.buildIDE();
 	}
 
-	public cUF : cUF;
-    public cNF : cNF;
-    public natOp : natOp;
-    public indPag : indPag;
-    public mod : mod;
-    public serie : serie;
-    public nNF : nNF;
-    public dhEmi : dhEmi;
-    public dhSaiEnt?: dhSaiEnt;
-    public tpNF : tpNF;
-    public idDest : idDest;
-    public cMunFG : cMunFG;
-    public tpImp : tpImp;
-    public tpEmis : tpEmis;
-    public cDV : cDV;
-    public tpAmb : tpAmb;
-    public finNFe : finNFe;
-    public indFinal : indFinal;
-    public indPres : indPres;
-    public procEmi : procEmi;
-    public verProc : verProc;
+	public cUF : number;
+    public cNF :number;
+    public natOp : string;
+    public indPag : number;
+    public mod : number;
+    public serie : number;
+    public nNF :number;
+    public dhEmi : string;
+    public dhSaiEnt?:dhSaiEnt;
+    public tpNF :tpNF;
+    public idDest :idDest;
+    public cMunFG :cMunFG;
+    public tpImp :tpImp;
+    public tpEmis :tpEmis;
+    public cDV : number;
+    public tpAmb :tpAmb;
+    public finNFe :finNFe;
+    public indFinal :indFinal;
+    public indPres :indPres;
+    public procEmi :procEmi;
+    public verProc :verProc;
 
 	buildIDE() {
-		this.cUF = new cUF(Helper.getCodeState(this.parameterToIssuer.issuer.UF));
-		this.cNF = new cNF(Math.random() * (99999999  - 0) + 0);
-		this.natOp = new natOp(Helper.getNatOp(this.parameterToIssuer.client.cliente_pessoa));
-		this.indPag = new indPag(this.parameterToIssuer.order.pagamento_parcelamento > 1 ? 1 : 0);
-		this.mod = new mod(Helper.DOCUMENT_TEMPLATE);
-		this.serie = new serie(this.parameterToIssuer.serie);
-		this.nNF = new nNF(this.parameterToIssuer.nNF);
-		this.dhEmi = new dhEmi(this.dateFormat(new Date()));
+		this.cUF = cUF.get(Helper.getCodeState(this.parameterToIssuer.issuer.UF));
+		this.cNF = cNF.get(Math.random() * (99999999  - 0) + 0);
+		this.natOp = natOp.get(Helper.getNatOp(this.parameterToIssuer.client.cliente_pessoa));
+		this.indPag = indPag.get(this.parameterToIssuer.order.pagamento_parcelamento > 1 ? 1 : 0);
+		this.mod = mod.get(Helper.DOCUMENT_TEMPLATE);
+		this.serie = serie.get(this.parameterToIssuer.serie);
+		this.nNF = nNF.get(this.parameterToIssuer.nNF);
+		this.dhEmi = dhEmi.get(this.dateFormat(new Date()));
 		this.tpNF = new tpNF(this.parameterToIssuer.typeOperation);
 
 		const saleWithinTheState = this.parameterToIssuer.issuer.UF == this.parameterToIssuer.deliveryCity.estado;
@@ -70,7 +70,7 @@ export class ide {
 		this.tpImp = new tpImp(Helper.PORTRAIT_MODE_DANFE);
 		this.tpEmis = Helper.NORMAL_ISSUE;
 		this.tpAmb = new tpAmb(this.parameterToIssuer.debug);
-		this.cDV = new cDV(Helper.KEY_CHECKER_TYPE);
+		this.cDV = cDV.get(Helper.KEY_CHECKER_TYPE);
 		this.finNFe = new finNFe(Helper.NORMAL_PURPOSE);
 		this.indFinal = new indFinal(Helper.SALE_TO_END_CONSUMER);
 		this.indPres = new indPres(Helper.NON_FACETOFACE_OPERATION_OVER_THE_INTERNET);
@@ -78,8 +78,8 @@ export class ide {
 		this.verProc = new verProc(Helper.VERSION_OF_THE_ISSUANCE_PROCESS);
 	}
 
-	dateFormat(now : Date) : String {
-		const isoStrDate = now.toISOString();
+	dateFormat(now : Date) : string {
+		const isoStrDate = now.toISOstring();
 		let strDateFormat = isoStrDate.split(".")[0];
 		strDateFormat += "-03:00";
 		return strDateFormat;
