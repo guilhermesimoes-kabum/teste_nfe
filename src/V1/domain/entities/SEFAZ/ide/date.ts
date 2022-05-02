@@ -1,7 +1,7 @@
 
-export abstract class dhEmi {
+export abstract class dateType {
 	static get(date : string) : string {
-		if(dhEmi.validity(date)){
+		if(dateType.validity(date)){
 			return date;
 		}
 		throw new Error();
@@ -12,7 +12,7 @@ export abstract class dhEmi {
 		const date = splitArrayDate [0];
 		const hour = splitArrayDate[1];
 
-		return dhEmi.dateFormatedCorrectly(date) && dhEmi.hourFormatedCorrectly(hour);
+		return dateType.dateFormatedCorrectly(date) && dateType.hourFormatedCorrectly(hour);
 	}
 
 	static dateFormatedCorrectly(date : string) : boolean {
@@ -22,7 +22,7 @@ export abstract class dhEmi {
 		const month = Number(splitDate[0]);
 		const day = Number(splitDate[0]);
 
-		const countDayOfTheMonth = dhEmi.countDayOfTheMonth(month, year);
+		const countDayOfTheMonth = dateType.countDayOfTheMonth(month, year);
 
 		if(day < 1 || month < 1 || year < 1970) {
 			return false;
@@ -53,7 +53,7 @@ export abstract class dhEmi {
 	static countDayOfTheMonth(month : number, year : number) {
 		const days = [30, 31];
 		if(month == 2) {
-			return dhEmi.leapYear(year) ? 29 : 28; 
+			return dateType.leapYear(year) ? 29 : 28; 
 		}
 
 		return month < 8 ? days[month % 2] : days[(month - 1) % 2];

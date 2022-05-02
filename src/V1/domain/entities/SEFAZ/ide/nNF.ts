@@ -1,15 +1,15 @@
 
 export abstract class nNF {
-	static get(number : Number) : Number {
-		if(nNF.validity(number)) {
-			return number;
+	static get(numberNF : number) : number {
+		if(nNF.validity(numberNF)) {
+			return numberNF;
 		}
 		throw new Error();
 	}
 
-	static validity(number: Number) : Boolean {
-		return Number.isInteger(number)
-			&& number > 0
-			&& number < 1000000000;
+	static validity(numberNF: number) : boolean {
+		return Number.isInteger(numberNF)
+			&& numberNF > 0
+			&& numberNF < 1000000000;
 	}
 }

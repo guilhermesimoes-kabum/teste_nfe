@@ -1,14 +1,18 @@
 
 
 export class procEmi {
-	constructor(private issuerProcess : Number) {
-		const result = this.validity();
+	static get(issuerProcess : number) : number{
+		if(procEmi.validity(issuerProcess)) {
+			return issuerProcess;
+		}
+
+		 throw new Error();
 	}
 
-	validity() : Boolean {
-		return this.issuerProcess == 0
-			|| this.issuerProcess == 1 
-			|| this.issuerProcess == 2 
-			|| this.issuerProcess == 3;
+	static validity(issuerProcess : number) : boolean {
+		return issuerProcess == 0
+			|| issuerProcess == 1 
+			|| issuerProcess == 2 
+			|| issuerProcess == 3;
 	}
 }

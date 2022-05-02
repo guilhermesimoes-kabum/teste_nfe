@@ -1,12 +1,16 @@
 
 export class idDest {
-	constructor(private destinationIdentification : Number) {
-		const result = this.validity();
+	static get(destinationIdentification : number) : number {
+		if(idDest.validity(destinationIdentification)) {
+			return destinationIdentification;
+		}
+
+		throw new Error();
 	}
 
-	validity() : Boolean {
-		return this.destinationIdentification == 1
-			|| this.destinationIdentification == 2 
-			|| this.destinationIdentification == 3; 
+	static validity(destinationIdentification : Number) : boolean {
+		return destinationIdentification == 1
+			|| destinationIdentification == 2 
+			|| destinationIdentification == 3; 
 	}
 }

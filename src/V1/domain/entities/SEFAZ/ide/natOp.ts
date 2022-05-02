@@ -1,12 +1,12 @@
 export abstract class natOp {
-	static get(natureOfoperation : String) : String {
+	static get(natureOfoperation : string) : string {
 		if(natOp.validity(natureOfoperation)) {
 			return natureOfoperation; 
 		}
 		throw new Error();
 	}	
 
-	static validity(natureOfoperation : String) : Boolean {
+	static validity(natureOfoperation : string) : boolean {
 		return natureOfoperation.length < 61;
 	}
 } 

@@ -1,10 +1,14 @@
 
-export class tpNF {
-	constructor(private typeNF : Number) {
-		const result = this.validity();
+export abstract class tpNF {
+	static get(typeNF : number) : number{
+		if(tpNF.validity(typeNF)) {
+			return typeNF;
+		}
+
+		throw new Error();
 	}
 
-	validity() : Boolean {
-		return this.typeNF == 1 || this.typeNF == 0; 
+	static validity(typeNF : number) : boolean {
+		return typeNF == 1 || typeNF == 0; 
 	}
 }

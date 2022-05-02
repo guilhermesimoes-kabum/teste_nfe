@@ -1,13 +1,17 @@
 
-export class indPag {
+export abstract class indPag {
 
-	constructor(private indPag: Number) {
-		const result = this.validity();
+	static get(paymenteIndicate: number) : number {
+		if(indPag.validity(paymenteIndicate)) {
+			return paymenteIndicate; 
+		}
+
+		throw new Error();
 	}
 
-	validity() : Boolean {
-		return this.indPag == 0 
-			|| this.indPag == 1
-			|| this.indPag == 2;
+	static validity(indPag: number) : boolean {
+		return indPag == 0 
+			|| indPag == 1
+			|| indPag == 2;
 	}
 }

@@ -1,16 +1,20 @@
 
 
-export class indPres {
-	constructor(private presenceIndicator : Number) {
-		this.validity();
+export abstract class indPres {
+	static get(presenceIndicator : number) : number {
+		if(indPres.validity(presenceIndicator)) {
+			return presenceIndicator;
+		}
+
+		throw new Error();
 	}
 
-	validity(): Boolean {
-		return this.presenceIndicator == 0
-			|| this.presenceIndicator == 1 
-			|| this.presenceIndicator == 2 
-			|| this.presenceIndicator == 3 
-			|| this.presenceIndicator == 4 
-			|| this.presenceIndicator == 9; 
+	static validity(presenceIndicator : number): boolean {
+		return presenceIndicator == 0
+			|| presenceIndicator == 1 
+			|| presenceIndicator == 2 
+			|| presenceIndicator == 3 
+			|| presenceIndicator == 4 
+			|| presenceIndicator == 9; 
 	}
 }

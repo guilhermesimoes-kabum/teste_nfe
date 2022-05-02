@@ -1,11 +1,13 @@
-
-
-export class verProc {
-	constructor(private issuerProcess : String) {
-		const result = this.validity();
+export abstract class verProc {
+	static get (issuerProcess : string) {
+		if(verProc.validity(issuerProcess)) {
+			return issuerProcess; 
+		}
+		
+		throw new Error();
 	}
 
-	validity() : Boolean {
-		return this.issuerProcess.length < 21;
+	static validity(issuerProcess : string) : Boolean {
+		return issuerProcess.length < 21;
 	}
 }

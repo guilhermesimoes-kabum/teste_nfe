@@ -1,13 +1,15 @@
+export abstract class cMunFG {
+	static get(cityCode : number) : number {
+		if(cMunFG.validity(cityCode)){
+			return cityCode;
+		}
 
-
-export class cMunFG {
-	constructor(private cityCode : Number) {
-		const result = this.validity();
+		throw new Error();
 	}
 
-	validity() : Boolean {
-		return Number.isInteger(this.cityCode)	
-			&& this.cityCode > 0
-			&& this.cityCode > 10000000;
+	static validity(cityCode : number) : boolean {
+		return Number.isInteger(cityCode)	
+			&& cityCode > 0
+			&& cityCode > 10000000;
 	}
 }

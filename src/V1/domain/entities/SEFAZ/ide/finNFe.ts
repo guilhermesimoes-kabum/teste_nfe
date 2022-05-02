@@ -1,15 +1,19 @@
 
 export class finNFe {
-	constructor(private finnally : Number) {
-		const result = this.validity();
+	static get(finnally : number) : number {
+		if(finNFe.validity(finnally)) {
+			return finnally;
+		}
+
+		throw new Error();
 	}
 
-	validity() : Boolean {
-		return this.finnally == 1
-			|| this.finnally == 2
-			|| this.finnally == 3 
- 			|| this.finnally == 4
- 			|| this.finnally == 0 
-			|| this.finnally == 9;
+	static validity(finnally : number) : boolean {
+		return finnally == 1
+			|| finnally == 2
+			|| finnally == 3 
+ 			|| finnally == 4
+ 			|| finnally == 0 
+			|| finnally == 9;
 	}
 }

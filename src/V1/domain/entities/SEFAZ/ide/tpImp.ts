@@ -1,16 +1,20 @@
 
 
-export class tpImp {
-	constructor(private printFormat : Number) {
-		this.validity(); 
+export abstract class tpImp {
+	static get(printFormat : number) : number {
+		if(tpImp.validity(printFormat)) { 
+			return printFormat;
+		} 
+
+		throw new Error();
 	} 
 
-	validity() : Boolean {
-		return this.printFormat == 0 
-			|| this.printFormat == 1
-			|| this.printFormat == 2
-			|| this.printFormat == 3
-			|| this.printFormat == 4
-			|| this.printFormat == 5;
+	static validity(printFormat : number) : boolean {
+		return printFormat == 0 
+			|| printFormat == 1
+			|| printFormat == 2
+			|| printFormat == 3
+			|| printFormat == 4
+			|| printFormat == 5;
 	}
 }

@@ -7,7 +7,7 @@ import {indPag} from "./indPag";
 import {mod} from "./mod";
 import {serie} from "./serie";
 import {nNF} from "./nNF";
-import {dhEmi} from "./dhEmi";
+import {dateType} from "./date";
 import {tpNF} from "./tpNF";
 import {idDest} from "./idDest";
 import {cMunFG} from "./cMunFG";
@@ -38,19 +38,19 @@ export class ide {
     public serie : number;
     public nNF :number;
     public dhEmi : string;
-    public dhSaiEnt?:dhSaiEnt;
-    public tpNF :tpNF;
-    public idDest :idDest;
-    public cMunFG :cMunFG;
-    public tpImp :tpImp;
-    public tpEmis :tpEmis;
+    public dhSaiEnt?: string;
+    public tpNF : number;
+    public idDest : number;
+    public cMunFG : number;
+    public tpImp : number;
+    public tpEmis : number;
     public cDV : number;
-    public tpAmb :tpAmb;
-    public finNFe :finNFe;
-    public indFinal :indFinal;
-    public indPres :indPres;
-    public procEmi :procEmi;
-    public verProc :verProc;
+    public tpAmb : number;
+    public finNFe : number;
+    public indFinal : number;
+    public indPres : number;
+    public procEmi : number;
+    public verProc : string;
 
 	buildIDE() {
 		this.cUF = cUF.get(Helper.getCodeState(this.parameterToIssuer.issuer.UF));
@@ -60,26 +60,27 @@ export class ide {
 		this.mod = mod.get(Helper.DOCUMENT_TEMPLATE);
 		this.serie = serie.get(this.parameterToIssuer.serie);
 		this.nNF = nNF.get(this.parameterToIssuer.nNF);
-		this.dhEmi = dhEmi.get(this.dateFormat(new Date()));
-		this.tpNF = new tpNF(this.parameterToIssuer.typeOperation);
+		this.dhEmi = dateType.get(this.dateFormat(new Date()));
+		this.tpNF = tpNF.get(this.parameterToIssuer.typeOperation);
 
 		const saleWithinTheState = this.parameterToIssuer.issuer.UF == this.parameterToIssuer.deliveryCity.estado;
+		const exteriorSale = this.parameterToIssuer.deliveryCity.estado = 'EX';
 
-		this.idDest = new idDest(saleWithinTheState ? 1 : 2); 
-		this.cMunFG = new cMunFG(this.parameterToIssuer.issuer.MUNICIPIO_CODIGO);
-		this.tpImp = new tpImp(Helper.PORTRAIT_MODE_DANFE);
-		this.tpEmis = Helper.NORMAL_ISSUE;
-		this.tpAmb = new tpAmb(this.parameterToIssuer.debug);
+		this.idDest = idDest.get(exteriorSale ? 3 : saleWithinTheState ? 1 : 2); 
+		this.cMunFG = cMunFG.get(this.parameterToIssuer.issuer.MUNICIPIO_CODIGO);
+		this.tpImp = tpImp.get(Helper.PORTRAIT_MODE_DANFE);
+		this.tpEmis = tpEmis.get(Helper.NORMAL_ISSUE);
+		this.tpAmb = tpAmb.get(this.parameterToIssuer.debug);
 		this.cDV = cDV.get(Helper.KEY_CHECKER_TYPE);
-		this.finNFe = new finNFe(Helper.NORMAL_PURPOSE);
-		this.indFinal = new indFinal(Helper.SALE_TO_END_CONSUMER);
-		this.indPres = new indPres(Helper.NON_FACETOFACE_OPERATION_OVER_THE_INTERNET);
-		this.procEmi = new procEmi(Helper.ISSUANCE_PROCESS);
-		this.verProc = new verProc(Helper.VERSION_OF_THE_ISSUANCE_PROCESS);
+		this.finNFe = finNFe.get(Helper.NORMAL_PURPOSE);
+		this.indFinal = indFinal.get(Helper.SALE_TO_END_CONSUMER);
+		this.indPres = indPres.get(Helper.NON_FACETOFACE_OPERATION_OVER_THE_INTERNET);
+		this.procEmi = procEmi.get(Helper.ISSUANCE_PROCESS);
+		this.verProc = verProc.get(Helper.VERSION_OF_THE_ISSUANCE_PROCESS);
 	}
 
 	dateFormat(now : Date) : string {
-		const isoStrDate = now.toISOstring();
+		const isoStrDate = now.toISOString();
 		let strDateFormat = isoStrDate.split(".")[0];
 		strDateFormat += "-03:00";
 		return strDateFormat;
