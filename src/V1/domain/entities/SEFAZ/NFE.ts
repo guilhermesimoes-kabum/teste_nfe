@@ -6,7 +6,6 @@ import {ide} from "./ide";
 import {total} from "./total";
 import {transp} from "./transp";
 
-
 export class NFE {
 
 	constructor(
