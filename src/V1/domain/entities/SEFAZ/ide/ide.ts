@@ -30,53 +30,75 @@ export class ide {
 		this.buildIDE();
 	}
 
-	public cUF : number;
-    public cNF :number;
-    public natOp : string;
-    public indPag : number;
-    public mod : number;
-    public serie : number;
-    public nNF :number;
-    public dhEmi : string;
-    public dhSaiEnt?: string;
-    public tpNF : number;
-    public idDest : number;
-    public cMunFG : number;
-    public tpImp : number;
-    public tpEmis : number;
-    public cDV : number;
-    public tpAmb : number;
-    public finNFe : number;
-    public indFinal : number;
-    public indPres : number;
-    public procEmi : number;
-    public verProc : string;
+	private _cUF : cUF;
+    private _cNF : cNF;
+    private _natOp : natOp;
+    private _indPag : indPag;
+    private _mod : mod;
+    private _serie : serie;
+    private _nNF : nNF;
+    private _dhEmi : dateType;
+    private _dhSaiEnt: dateType;
+    private _tpNF : tpNF;
+    private _idDest : idDest;
+    private _cMunFG : cMunFG;
+    private _tpImp : tpImp;
+    private _tpEmis : tpEmis;
+    private _cDV : cDV;
+    private _tpAmb : tpAmb;
+    private _finNFe : finNFe;
+    private _indFinal : indFinal;
+    private _indPres : indPres;
+    private _procEmi : procEmi;
+    private _verProc : verProc;
 
-	buildIDE() {
-		this.cUF = cUF.get(Helper.getCodeState(this.parameterToIssuer.issuer.UF));
-		this.cNF = cNF.get(Math.random() * (99999999  - 0) + 0);
-		this.natOp = natOp.get(Helper.getNatOp(this.parameterToIssuer.client.cliente_pessoa));
-		this.indPag = indPag.get(this.parameterToIssuer.order.pagamento_parcelamento > 1 ? 1 : 0);
-		this.mod = mod.get(Helper.DOCUMENT_TEMPLATE);
-		this.serie = serie.get(this.parameterToIssuer.serie);
-		this.nNF = nNF.get(this.parameterToIssuer.nNF);
-		this.dhEmi = dateType.get(this.dateFormat(new Date()));
-		this.tpNF = tpNF.get(this.parameterToIssuer.typeOperation);
+	get cUF() : number {return this._cUF.get()}
+	get cNF() : number { return this._cNF.get() }
+	get natOp() : string { return this._natOp.get() }
+	get indPag() : number { return this._indPag.get() }
+	get mod() : number { return this._mod.get() }
+	get serie() : number { return this._serie.get() }
+	get nNF() : number { return this._nNF.get() }
+	get dhEmi() : string { return this._dhEmi.get() }
+	get dhSaiEnt() : string { return this._dhSaiEnt.get() }
+	get tpNF() : number { return this._tpNF.get() }
+	get idDest() : number { return this._idDest.get() }
+	get cMunFG() : number { return this._cMunFG.get() }
+	get tpImp() : number { return this._tpImp.get() }
+	get tpEmis() : number { return this._tpEmis.get() }
+	get cDV() : number { return this._cDV.get() }
+	get tpAmb() : number { return this._tpAmb.get() }
+	get finNFe() : number { return this._finNFe.get() }
+	get indFinal() : number { return this._indFinal.get() }
+	get indPres() : number { return this._indPres.get() }
+	get procEmi() : number { return this._procEmi.get() }
+	get verProc() : string { return this._verProc.get() }
+
+	private buildIDE() {
+		this._cUF = new cUF(Helper.getCodeState(this.parameterToIssuer.issuer.UF));
+		this._cNF = new cNF(Math.random() * (99999999  - 0) + 0);
+		this._natOp = new natOp(Helper.getNatOp(this.parameterToIssuer.client.cliente_pessoa));
+		this._indPag = new indPag(this.parameterToIssuer.order.pagamento_parcelamento > 1 ? 1 : 0);
+		this._mod = new mod(Helper.DOCUMENT_TEMPLATE);
+		this._serie = new serie(this.parameterToIssuer.serie);
+		this._nNF = new nNF(this.parameterToIssuer.nNF);
+		this._dhEmi = new dateType(this.dateFormat(new Date()));
+		this._tpNF = new tpNF(this.parameterToIssuer.typeOperation);
 
 		const saleWithinTheState = this.parameterToIssuer.issuer.UF == this.parameterToIssuer.deliveryCity.estado;
 		const exteriorSale = this.parameterToIssuer.deliveryCity.estado = 'EX';
 
-		this.idDest = idDest.get(exteriorSale ? 3 : saleWithinTheState ? 1 : 2); 
-		this.cMunFG = cMunFG.get(this.parameterToIssuer.issuer.MUNICIPIO_CODIGO);
-		this.tpImp = tpImp.get(Helper.PORTRAIT_MODE_DANFE);
-		this.tpEmis = tpEmis.get(Helper.NORMAL_ISSUE);
-		this.tpAmb = tpAmb.get(this.parameterToIssuer.debug);
-		this.cDV = cDV.get(Helper.KEY_CHECKER_TYPE);
-		this.finNFe = finNFe.get(Helper.NORMAL_PURPOSE);
-		this.indFinal = indFinal.get(Helper.SALE_TO_END_CONSUMER);
-		this.indPres = indPres.get(Helper.NON_FACETOFACE_OPERATION_OVER_THE_INTERNET);
-		this.procEmi = procEmi.get(Helper.ISSUANCE_PROCESS);
-		this.verProc = verProc.get(Helper.VERSION_OF_THE_ISSUANCE_PROCESS);
+		this._idDest = new idDest(exteriorSale ? 3 : saleWithinTheState ? 1 : 2); 
+		this._cMunFG = new cMunFG(this.parameterToIssuer.issuer.MUNICIPIO_CODIGO);
+		this._tpImp = new tpImp(Helper.PORTRAIT_MODE_DANFE);
+		this._tpEmis = new tpEmis(Helper.NORMAL_ISSUE);
+		this._tpAmb = new tpAmb(this.parameterToIssuer.debug);
+		this._cDV = new cDV(Helper.KEY_CHECKER_TYPE);
+		this._finNFe = new finNFe(Helper.NORMAL_PURPOSE);
+		this._indFinal = new indFinal(Helper.SALE_TO_END_CONSUMER);
+		this._indPres = new indPres(Helper.NON_FACETOFACE_OPERATION_OVER_THE_INTERNET);
+		this._procEmi = new procEmi(Helper.ISSUANCE_PROCESS);
+		this._verProc = new verProc(Helper.VERSION_OF_THE_ISSUANCE_PROCESS);
 	}
 
 	dateFormat(now : Date) : string {
