@@ -1,14 +1,18 @@
+import {INDFINAL} from "./enums/INDFINAL";
 
-export abstract class indFinal {
-	static get(indicateFinal : number) : number {
-		if(indFinal.validity(indicateFinal)) {
-			return indicateFinal;
+export class indFinal {
+	constructor(private indicateFinal : number) {
+		if(!this.validity(indicateFinal)) {
+			throw new Error();
 		}
-		throw new Error();
 	}
 	
-	static validity(indicateFinal : number) : boolean {
-		return indicateFinal == 0
-			|| indicateFinal == 1;
+	private validity(indicateFinal : number) : boolean {
+		const indicateFinalEnum = INDFINAL[indicateFinal];
+		return indicateFinalEnum != null;
+	}
+
+	get() : number {
+		return this.indicateFinal;
 	}
 }

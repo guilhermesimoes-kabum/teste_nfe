@@ -1,20 +1,18 @@
-export abstract class tpEmis {
-	static get(issuerType : number) : number {
-		if(tpEmis.validity(issuerType)) { 
-			return issuerType; 
-		}
+import {TPEMIS} from "./enums/TPEMIS";
 
-		throw new Error();
+export class tpEmis {
+	constructor(private issuerType : number) {
+		if(!this.validity(this.issuerType)) { 
+			throw new Error();
+		}
 	}
 
-	static validity(issuerType : number) : boolean {
-		return issuerType == 1
-			|| issuerType == 2
-			|| issuerType == 3
-			|| issuerType == 4
-			|| issuerType == 5
-			|| issuerType == 6
-			|| issuerType == 7
-			|| issuerType == 9;
+	private validity(issuerType : number) : boolean {
+		const tpEmisEnum = TPEMIS[issuerType];
+		return tpEmisEnum != null;
+	}
+
+	get() : number {
+		return this.issuerType;
 	}
 }

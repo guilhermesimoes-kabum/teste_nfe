@@ -1,17 +1,18 @@
+import {INDPAG} from "./enums/INDPAG";
 
-export abstract class indPag {
-
-	static get(paymenteIndicate: number) : number {
-		if(indPag.validity(paymenteIndicate)) {
-			return paymenteIndicate; 
+export class indPag {
+	constructor(private paymenteIndicate: number) {
+		if(!this.validity(paymenteIndicate)) {
+			throw new Error();
 		}
-
-		throw new Error();
 	}
 
-	static validity(indPag: number) : boolean {
-		return indPag == 0 
-			|| indPag == 1
-			|| indPag == 2;
+	private validity(indPag: number) : boolean {
+		const indPagEnum = INDPAG[indPag];
+		return indPagEnum != null;
+	}
+
+	get() : number {
+		return this.paymenteIndicate; 
 	}
 }

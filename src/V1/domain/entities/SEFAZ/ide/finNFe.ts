@@ -1,19 +1,18 @@
+import {FINNFE} from "./enums/FINNFE";
 
 export class finNFe {
-	static get(finnally : number) : number {
-		if(finNFe.validity(finnally)) {
-			return finnally;
+	constructor(private finnally : number) {
+		if(!this.validity(finnally)) {
+			throw new Error();
 		}
-
-		throw new Error();
 	}
 
-	static validity(finnally : number) : boolean {
-		return finnally == 1
-			|| finnally == 2
-			|| finnally == 3 
- 			|| finnally == 4
- 			|| finnally == 0 
-			|| finnally == 9;
+	private validity(finnally : number) : boolean {
+		const finnallyEnum = FINNFE[finnally]
+		return finnallyEnum != null;
+	}
+
+	get() : number {
+		return this.finnally;
 	}
 }

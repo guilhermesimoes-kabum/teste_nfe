@@ -1,15 +1,17 @@
-
 export class serie {
-	static get(series : number) : number {
-		if(serie.validity(series)) {
-			return series
+	constructor(private series : number) {
+		if(!this.validity(series)) {
+			throw new Error();
 		}
-		throw new Error();
 	}
 
-	static validity(series : number) : boolean {
+	private validity(series : number) : boolean {
 		return Number.isInteger(series)
 			&& series < 1000 
 			&& series > 0;
+	}
+
+	get() : number {
+		return this.series;
 	}
 }

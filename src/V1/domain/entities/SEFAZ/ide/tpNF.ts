@@ -1,14 +1,18 @@
+import {TPNF} from "./enums/TPNF";
 
-export abstract class tpNF {
-	static get(typeNF : number) : number{
-		if(tpNF.validity(typeNF)) {
-			return typeNF;
+export class tpNF {
+	constructor(private typeNF : number) {
+		if(this.validity(this.typeNF)) {
+			throw new Error();
 		}
-
-		throw new Error();
 	}
 
-	static validity(typeNF : number) : boolean {
-		return typeNF == 1 || typeNF == 0; 
+	private validity(typeNF : number) : boolean {
+		const tpNFEnum = TPNF[typeNF];
+		return tpNFEnum != null; 
+	}
+
+	get() : number {
+		return this.typeNF;
 	}
 }

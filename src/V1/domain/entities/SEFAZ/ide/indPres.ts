@@ -1,20 +1,18 @@
+import {INDPRES} from "./enums/INDPRES";
 
-
-export abstract class indPres {
-	static get(presenceIndicator : number) : number {
-		if(indPres.validity(presenceIndicator)) {
-			return presenceIndicator;
+export class indPres {
+	constructor(private presenceIndicator : number) {
+		if(!this.validity(presenceIndicator)) {
+			throw new Error();
 		}
-
-		throw new Error();
 	}
 
-	static validity(presenceIndicator : number): boolean {
-		return presenceIndicator == 0
-			|| presenceIndicator == 1 
-			|| presenceIndicator == 2 
-			|| presenceIndicator == 3 
-			|| presenceIndicator == 4 
-			|| presenceIndicator == 9; 
+	private validity(presenceIndicator : number): boolean {
+		const presenceIndicatorEnum = INDPRES[presenceIndicator];
+		return presenceIndicatorEnum != null;
+	}
+
+	get() : number {
+		return this.presenceIndicator;
 	}
 }

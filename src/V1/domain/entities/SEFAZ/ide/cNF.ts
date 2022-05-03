@@ -1,15 +1,17 @@
-export abstract class cNF {
-	static get(codeNF: number) : number {
-		if(cNF.validity(codeNF)) {
-			return codeNF;
+export class cNF {
+	constructor(private codeNF: number) {
+		if(!this.validity(codeNF)) {
+			throw new Error();
 		}
-
-		throw new Error();
 	}
 
-	static validity(codeNF : number) : boolean {
+	private validity(codeNF : number) : boolean {
 		return Number.isInteger(codeNF) 
 			&& codeNF > 0 
 			&& codeNF < 100000000
+	}
+
+	get() : number {
+		return this.codeNF;
 	}
 }

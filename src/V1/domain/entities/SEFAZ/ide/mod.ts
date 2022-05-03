@@ -1,13 +1,18 @@
-export abstract class mod {
-	static get (moduleFiscalDocument : number) : number{
-		if(mod.validity(moduleFiscalDocument)) {
-			return 	moduleFiscalDocument;
+import {MOD} from "./enums/MOD";
+
+export class mod {
+	constructor (private moduleFiscalDocument : number) {
+		if(!this.validity(moduleFiscalDocument)) {
+			throw new Error();
 		}
-		throw new Error();
 	}
 
-	static validity(moduleFiscalDocument : number) : boolean {
-		return moduleFiscalDocument == 55 
-			|| moduleFiscalDocument == 65;
+	private validity(moduleFiscalDocument : number) : boolean {
+		const moduleFiscalDocumentEnum = MOD[moduleFiscalDocument];
+		return moduleFiscalDocumentEnum != null;
 	}
+
+	get() : number {
+		return this.moduleFiscalDocument;
+	} 
 }

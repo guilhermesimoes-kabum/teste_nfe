@@ -1,18 +1,18 @@
-
+import {PROCEMI} from "./enums/PROCEMI";
 
 export class procEmi {
-	static get(issuerProcess : number) : number{
-		if(procEmi.validity(issuerProcess)) {
-			return issuerProcess;
+	constructor(private issuerProcess : number) {
+		if(!this.validity(issuerProcess)) {
+		 	throw new Error();
 		}
-
-		 throw new Error();
 	}
 
-	static validity(issuerProcess : number) : boolean {
-		return issuerProcess == 0
-			|| issuerProcess == 1 
-			|| issuerProcess == 2 
-			|| issuerProcess == 3;
+	private validity(issuerProcess : number) : boolean {
+		const issuerProcessEnum = PROCEMI[issuerProcess];
+		return issuerProcessEnum != null;
+	}
+
+	get() : number {
+		return this.issuerProcess;
 	}
 }

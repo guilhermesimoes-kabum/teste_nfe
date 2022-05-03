@@ -1,20 +1,18 @@
+import {TPIMP} from "./enums/TPIMP";
 
-
-export abstract class tpImp {
-	static get(printFormat : number) : number {
-		if(tpImp.validity(printFormat)) { 
-			return printFormat;
+export class tpImp {
+	constructor(private printFormat : number) {
+		if(this.validity(this.printFormat)) { 
+			throw new Error();
 		} 
-
-		throw new Error();
 	} 
 
-	static validity(printFormat : number) : boolean {
-		return printFormat == 0 
-			|| printFormat == 1
-			|| printFormat == 2
-			|| printFormat == 3
-			|| printFormat == 4
-			|| printFormat == 5;
+	private validity(printFormat : number) : boolean {
+		const tpImpEnum = TPIMP[printFormat];
+		return tpImpEnum != null;
+	}
+
+	get() : number {
+		return this.printFormat;
 	}
 }

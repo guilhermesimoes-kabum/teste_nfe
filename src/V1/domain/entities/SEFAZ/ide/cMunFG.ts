@@ -1,15 +1,17 @@
-export abstract class cMunFG {
-	static get(cityCode : number) : number {
-		if(cMunFG.validity(cityCode)){
-			return cityCode;
+export class cMunFG {
+	constructor(private cityCode : number) {
+		if(this.validity(this.cityCode)){
+			throw new Error();
 		}
-
-		throw new Error();
 	}
 
-	static validity(cityCode : number) : boolean {
+	private validity(cityCode : number) : boolean {
 		return Number.isInteger(cityCode)	
 			&& cityCode > 0
-			&& cityCode > 10000000;
+			&& cityCode < 10000000;
+	}
+
+	get() : number {
+		return this.cityCode;	
 	}
 }

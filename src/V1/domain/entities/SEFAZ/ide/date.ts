@@ -1,28 +1,27 @@
 
-export abstract class dateType {
-	static get(date : string) : string {
-		if(dateType.validity(date)){
-			return date;
+export class dateType {
+	constructor(private date : string) {
+		if(!this.validity(this.date)){
+			throw new Error();
 		}
-		throw new Error();
 	}
 
-	static validity(dateAndHour : string) : boolean {
+	private validity(dateAndHour : string) : boolean {
 		const splitArrayDate = dateAndHour.split("T");
 		const date = splitArrayDate [0];
 		const hour = splitArrayDate[1];
 
-		return dateType.dateFormatedCorrectly(date) && dateType.hourFormatedCorrectly(hour);
+		return this.dateFormatedCorrectly(date) && this.hourFormatedCorrectly(hour);
 	}
 
-	static dateFormatedCorrectly(date : string) : boolean {
+	private dateFormatedCorrectly(date : string) : boolean {
 		const splitDate = date.split("-");
 
 		const year = Number(splitDate[0]);
 		const month = Number(splitDate[0]);
 		const day = Number(splitDate[0]);
 
-		const countDayOfTheMonth = dateType.countDayOfTheMonth(month, year);
+		const countDayOfTheMonth = this.countDayOfTheMonth(month, year);
 
 		if(day < 1 || month < 1 || year < 1970) {
 			return false;
@@ -35,7 +34,7 @@ export abstract class dateType {
 		return true;
 	}
 
-	static hourFormatedCorrectly(hourWithTimeZone : string) : boolean {
+	private hourFormatedCorrectly(hourWithTimeZone : string) : boolean {
 		const hourMinuteSeconds = hourWithTimeZone.split("-")[0];
 		const hourMinuteSecondsSplit = hourMinuteSeconds.split(":");
 
@@ -50,16 +49,21 @@ export abstract class dateType {
 		return hour < 24 && minute < 60 && seconds < 60;
 	}
 
-	static countDayOfTheMonth(month : number, year : number) {
+	private countDayOfTheMonth(month : number, year : number) {
 		const days = [30, 31];
 		if(month == 2) {
-			return dateType.leapYear(year) ? 29 : 28; 
+			return this.leapYear(year) ? 29 : 28; 
 		}
 
 		return month < 8 ? days[month % 2] : days[(month - 1) % 2];
 	}
 
-	static leapYear(year : number) : boolean {
+	private leapYear(year : number) : boolean {
 		return (year % 4 == 0) && ((year % 100 != 0) || (year % 400 == 0));
+	
+	}
+
+	get() : string {
+		return this.date;
 	}
 }

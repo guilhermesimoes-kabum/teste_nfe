@@ -1,16 +1,18 @@
+import {IDDEST} from "./enums/IDDEST";
 
 export class idDest {
-	static get(destinationIdentification : number) : number {
-		if(idDest.validity(destinationIdentification)) {
-			return destinationIdentification;
+	constructor(private destinationIdentification : number) {
+		if(this.validity(destinationIdentification)) {
+			throw new Error();
 		}
-
-		throw new Error();
 	}
 
-	static validity(destinationIdentification : Number) : boolean {
-		return destinationIdentification == 1
-			|| destinationIdentification == 2 
-			|| destinationIdentification == 3; 
+	private validity(destinationIdentification : number) : boolean {
+		const destinationEnum = IDDEST[destinationIdentification];
+		return destinationEnum != null; 
+	}
+
+	get() : number {
+		return this.destinationIdentification;
 	}
 }
