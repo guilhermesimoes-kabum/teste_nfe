@@ -9,7 +9,7 @@ The directories are separated (decoupled and coupled) why if we move this busine
 
 ## Architecture 
 ```
-|_ domain/           //Deepest Layer of the project, she has not knowledge of anything but herself
+|_ domain/           //Deepest Layer of the project, it has not knowledge of anything but herself
 	|_ adapter/      //Adapters to 'normalize' and mapped data to differents interfaces
 	|_ entities/     //Rules espcified business
 	|_ interface/    //Interfaces for abstract modules
