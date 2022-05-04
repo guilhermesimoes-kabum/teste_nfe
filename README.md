@@ -7,6 +7,23 @@ We abstract all files that communicate with the ORM, Framewaor and Other API wit
 The directories are separated (decoupled and coupled) why if we move this business rule to other project, is only move the decoupled directories, without dificcult, only Control - C + Control - V.
 
 
+## Architecture 
+```
+|_ domain/           //Deepest Layer of the project, she has not knowledge of anything but herself
+	|_ adapter/      //Adapters to 'normalize' and mapped data to differents interfaces
+	|_ entities/     //Rules espcified business
+	|_ interface/    //Interfaces for abstract modules
+	|_ helper.ts     
+|_ infra             //Dirty Layer. This layer contain files what comunicate with outside
+	|_ gateway/      //Gateway storage files what communicate with outside trough requests apis
+	|_ repositories/ //Communication with ORM
+	|_ facade.ts 
+	|_ nfe.controller.ts
+	|_ v1.module.ts
+|_ usescases             //Layer the business rule
+	|_nfesale.service.ts
+```
+
 ## Installation
 
 ```bash
