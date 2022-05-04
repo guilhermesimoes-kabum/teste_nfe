@@ -1,4 +1,5 @@
-import {Controller, HttpException, HttpStatus, Param, Post} from "@nestjs/common";
+import {Body, Controller, HttpException, HttpStatus, Param, Post} from "@nestjs/common";
+import {ParametersToIssuer} from "../domain/interface/parametersToIssuer.interface";
 import {ResponseIssuer} from "./adapter/responseIssuer";
 import {Facade} from "./facade";
 
@@ -10,10 +11,10 @@ export class NFeController {
 		this.facade = new Facade();
 	}
 
-	@Post('/:id_pedido')
-	async issueSalesInvoicy(@Param('id_pedido') id_pedido: string) : Promise<ResponseIssuer> {
+	@Post()
+	async issueInvoice(@Body() parameterToIssuer : ParametersToIssuer) : Promise<ResponseIssuer> {
 		try {
-			return this.facade.issueSalesInvoicy(id_pedido);
+			return this.facade.issueSalesInvoicy(parameterToIssuer);
 		}catch(error) {
 			throw new HttpException(error, HttpStatus.BAD_REQUEST);
 		}

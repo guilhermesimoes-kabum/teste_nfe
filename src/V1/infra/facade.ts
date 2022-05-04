@@ -1,3 +1,4 @@
+import {ParametersToIssuer} from "../domain/interface/parametersToIssuer.interface";
 import {ResponseIssuer} from "./adapter/responseIssuer";
 import {Invoicy} from "./invoicy/invoicy";
 import {ClientRepository} from "./repositories/client.repository";
@@ -23,11 +24,11 @@ export class Facade {
 		this.issuer = new Invoicy();
 	}
 
-	issueSalesInvoicy(id_pedido: string) : Promise<ResponseIssuer>{
+	issueSalesInvoicy(parameterToIssuer : ParametersToIssuer) : Promise<ResponseIssuer>{
 		const service = new NFeSaleService(
 			this.nfeRepository, this.orderRepository, this.issuer, this.deliveryCityRepository,
 			this.issuerRepository, this.shippingCompanyRepository, this.clientRepository
 		);
-		return service.issueSalesInvoicy(id_pedido);
+		return service.issueSalesInvoicy(parameterToIssuer);
 	}
 }
