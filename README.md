@@ -24,11 +24,35 @@ The directories are separated (decoupled and coupled) why if we move this busine
 	|_nfesale.service.ts
 ```
 
-## Installation
+## Contribute 
+**Send Changes**
+Fork the project, create the brahch git flow format. Example: <br>
+NEW FEATURE:<br>
+`feature/implementation_the_gateway`<br>
+Declare the name branch with snake_case. Must be like this because its easier to read. <br>
+Look this:
+SNAKE_CASE <br>
+`implementation_the_gateway`<br>
+CAMEL_CASE<br>
+`implementationTheGateway`<br>
+Wich of the two is more confortable to read?<br>
+Before create branch, and do your changes, you open the PR <br>
 
-```bash
-$ npm install
-```
+**Code Style**
+The file name must be written in CamelCase (Words separated with capital latters). Exemple: <br>
+GOOD<br>
+`NFeRepositoryInterface.pm`<br>
+BAD<br>
+`nfe_repository_interface.pm`<br> 
+Must be like this because all functions of the node.js is CamelCase and we do not mix differents ways to write. <br>
+
+The ENUMS and CONSTANTS must be have declared with capital latters and words separated with _ (underscore) <br>
+Example:<br>
+`THIS_IS_A_CONSTANT`<br>
+
+The ifs must be have declared with spacing between closed parentheses and without spacing after `if` and between parentheses and condition. <br>
+Example:<br>
+`if(condition) { ... }`
 
 ## Running the app
 
