@@ -1,101 +1,103 @@
-export interface Order {
-	codigo: Number;
-	data_garantia: Number;
-	cd_codigo: Number;
-	id_cliente: String;
-	nf_numero: Number;
-	pedido_obs: String;
-	pedido_origem: Number;
-	frete_codigo: Number;
-	frete_volumes: Number;
-	frete_volumes_alterado_em: Number;
-	valor_desconto: Number;
-	valor_credito: Number;
-	valor_frete: Number;
-	valor_total: Number;
-	pagamento_codigo: Number;
-	pagamento_data: Number;
-	endereco_logradouro: String;
-	endereco_referencia: String;
-	endereco_bairro: String;
-	endereco_cidade: Number;
-	endereco_cep: Number;
-	total_geral: Number;
-	valor_juros: Number;
-	pagamento_parcelamento: Number;
-	pagamento_categoria: String;
+import {TaxationInterface} from "./TaxationInterface";
+
+interface Order {
+	codigo: number;
+	data_garantia: number;
+	cd_codigo: number;
+	id_cliente: string;
+	nf_numero: number;
+	pedido_obs: string;
+	pedido_origem: number;
+	frete_codigo: number;
+	frete_volumes: number;
+	frete_volumes_alterado_em: number;
+	valor_desconto: number;
+	valor_credito: number;
+	valor_frete: number;
+	valor_total: number;
+	pagamento_codigo: number;
+	pagamento_data: number;
+	endereco_logradouro: string;
+	endereco_referencia: string;
+	endereco_bairro: string;
+	endereco_cidade: number;
+	endereco_cep: number;
+	total_geral: number;
+	valor_juros: number;
+	pagamento_parcelamento: number;
+	pagamento_categoria: string;
 }
 
-export interface CD {
-    cnpj : String;
-    referencia : String;
+interface CD {
+    cnpj : string;
+    referencia : string;
     emissao_por_filial_virtual? :  Boolean;
-    filial_vitual? : Number;
-    IE : String;
-    IM? : Number;
-    LOGRADOURO : String;
-    NUMERO : Number;
-    COMPLEMENTO : String;
-    BAIRRO : String;
-    MUNICIPIO_CODIGO : Number;
-    MUNICIPIO_NOME : String;
-    UF : String;
-    CEP : Number;
-	IEST: String; 
+    filial_vitual? : number;
+    IE : string;
+    IM? : number;
+    LOGRADOURO : string;
+    NUMERO : number;
+    COMPLEMENTO : string;
+    BAIRRO : string;
+    MUNICIPIO_CODIGO : number;
+    MUNICIPIO_NOME : string;
+    UF : string;
+    CEP : number;
+	IEST: string; 
 }
 
-export interface Client {
-	codigo : Number;
-	data : Number;
-	loja_codigo : Number;
-	id_cliente : String;
-	cliente_email : String;
-	cliente_pessoa : String;
-	cliente_sexo : String;
-	cliente_nome : String;
-	cliente_razao_social? : String;
-	cliente_cpf_cnpj : Number;
-	cliente_nascimento : String;
-	cliente_telefone_01? : Number;
-	cliente_telefone_02? : Number;
-	cliente_credito : Number;
+interface Client {
+	codigo : number;
+	data : number;
+	loja_codigo : number;
+	id_cliente : string;
+	cliente_email : string;
+	cliente_pessoa : string;
+	cliente_sexo : string;
+	cliente_nome : string;
+	cliente_razao_social? : string;
+	cliente_cpf_cnpj : number;
+	cliente_nascimento : string;
+	cliente_telefone_01? : number;
+	cliente_telefone_02? : number;
+	cliente_credito : number;
 }
 
-export interface ShippingCompany {
-	ie?: String;
-	observacaoNF?: String;
-	cep?: String;
-	fantasia?: String;
-	cnpj: Number;
-	razaoSocial?: String;
+interface ShippingCompany {
+	ie?: string;
+	observacaoNF?: string;
+	cep?: string;
+	fantasia?: string;
+	cnpj: number;
+	razaoSocial?: string;
 }
 
-export interface Item {
-    item_quantidade : Number;
-    produto_codigo : Number;
-    produto_nome_nfe : String;
-    valor_unitario : Number;
-    produto_ean : Number;
-    item_openbox : String;
-	mercadoria_codigo? : Number;
-    brinde? : Number; 
-    produto_ncm : Number; 
-    produto_especie : Number; 
-    codigo_produto : Number; 
-    mercadoria_serie : Number; 
-    aliquota_nacional : Number; 
-    produto_garantia : Number; 
-    item_peso : Number; 
-    fabricante : Number; 
-    estado : String;
-	orig_cst : Number;
-	orig_cst_fornecedor: Number;
+interface Item {
+    item_quantidade : number;
+    produto_codigo : number;
+    produto_nome_nfe : string;
+    valor_unitario : number;
+    produto_ean : number;
+    item_openbox : string;
+	mercadoria_codigo? : number;
+    brinde? : number; 
+    produto_ncm : number; 
+    produto_especie : number; 
+    codigo_produto : number; 
+    mercadoria_serie : number; 
+    aliquota_nacional : number; 
+    produto_garantia : number; 
+    item_peso : number; 
+    fabricante : number; 
+    estado : string;
+	orig_cst : number;
+	orig_cst_fornecedor: number;
 }
 
-export interface DeliveryCity {
-	estado: String;
-	cidade: String;
-	ibge:  Number;
+interface DeliveryCity {
+	estado: string;
+	cidade: string;
+	ibge:  number;
 }
 
 export interface ParametersToIssuer {
@@ -105,8 +107,9 @@ export interface ParametersToIssuer {
 	client: Client;
 	items: Array<Item>;
 	deliveryCity: DeliveryCity;
-	serie: Number;
-	nNF: Number;
+	serie: number;
+	nNF: number;
 	debug: boolean;
-	typeOperation : Number;
+	typeOperation : number;
+	taxation? : TaxationInterface;
 }
