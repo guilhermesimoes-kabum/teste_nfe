@@ -1,4 +1,4 @@
-export class ResponseIssuer {
+export interface ResponseIssuer {
 	xml_link : string;
 	pdf_link : string;
 	xml_base64 : string;	
