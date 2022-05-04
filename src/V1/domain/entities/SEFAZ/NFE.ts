@@ -9,7 +9,6 @@ import {transp} from "./transp";
 export class NFE {
 
 	constructor(
-		private taxation: Taxation,
 		private parameterToIssuer : ParametersToIssuer
 	){
 		this.generateMandatoryGroups();
