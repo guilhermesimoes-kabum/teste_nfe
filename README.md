@@ -25,7 +25,7 @@ The directories are separated (decoupled and coupled) why if we move this busine
 ```
 
 ## Contribute 
-**Send Changes**
+**Send Changes**<br>
 Fork the project, create the brahch git flow format. Example: <br>
 NEW FEATURE:<br>
 `feature/implementation_the_gateway`<br>
@@ -36,9 +36,9 @@ SNAKE_CASE <br>
 CAMEL_CASE<br>
 `implementationTheGateway`<br>
 Wich of the two is more confortable to read?<br>
-Before create branch, and do your changes, you open the PR <br>
+Before create branch, and do your changes, you open the PR <br><br>
 
-**Code Style**
+**Code Style**<br>
 The file name must be written in CamelCase (Words separated with capital latters). Exemple: <br>
 GOOD<br>
 `NFeRepositoryInterface.pm`<br>
