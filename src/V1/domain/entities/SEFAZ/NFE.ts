@@ -1,4 +1,5 @@
 import {ParametersToIssuer} from "src/V1/shared/parametersToIssuer.interface";
+import {TaxationInterface} from "../../interface/TaxationInterface";
 import {Taxation} from "../taxation";
 import {det} from "./det";
 import {emit} from "./emit";
@@ -9,7 +10,8 @@ import {transp} from "./transp";
 export class NFE {
 
 	constructor(
-		private parameterToIssuer : ParametersToIssuer
+		private parameterToIssuer : ParametersToIssuer, 
+		private taxation : TaxationInterface
 	){
 		this.generateMandatoryGroups();
 	}; 
