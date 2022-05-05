@@ -28,8 +28,8 @@ export interface ICMS_UFDEST {
 }
 
 export interface TaxationInterface {
-	getDadosICMS() : ICMS;
-	getDadosPIS() : PIS;
-	getDadosCOFINS() : COFINS;
-	getDadosICMS_UFDEST() : ICMS_UFDEST;
+	getICMS() : ICMS;
+	getPIS() : PIS;
+	getCOFINS() : COFINS;
+	getICMS_UFDEST() : ICMS_UFDEST;
 }
