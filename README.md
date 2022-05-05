@@ -77,6 +77,9 @@ $ npm run test
 $ npm run test:cov
 ```
 
+**Writing tests**<br>
+Never use a it() in tests of the Jest. Instead of use test(). The reason is simple and obvious: The test() is more intuitive.
+ 
 
 ## Author 
 
