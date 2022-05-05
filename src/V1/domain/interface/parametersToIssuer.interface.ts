@@ -100,6 +100,12 @@ interface DeliveryCity {
 	ibge:  number;
 }
 
+export enum typeTaxation {
+	ISSUER_KABUM_ORDER, 
+	TRANF_KABUM,
+	OTHERS_INPUTS
+}
+
 export interface ParametersToIssuer {
 	order: Order;
 	issuer: CD;
@@ -112,4 +118,5 @@ export interface ParametersToIssuer {
 	debug: boolean;
 	typeOperation : number;
 	taxation? : TaxationInterface;
+	typeTaxation : typeTaxation;
 }
