@@ -2,7 +2,9 @@ import {INestApplication} from "@nestjs/common";
 import {Test, TestingModule} from "@nestjs/testing";
 import {ResponseInvoicyStub} from "src/V1/infra/gateway/invoicy/responseInvoicyStub";
 import {V1Module} from "src/V1/infra/v1.module";
-import supertest from "supertest";
+import supertest = require("supertest");
+import {configMysqlQA} from "../../database.provider";
+import {KbNotasfiscaisAliquotaICMSestaado} from "../../src/V1/infra/repositories/entities/KbNotasfiscaisAliquotaICMSestado";
 
 describe('integration', () => {
 
@@ -25,5 +27,13 @@ describe('integration', () => {
 	});	
 
 	test('Repository', async () => {
+		const kbNotasFiscaisAliICMSestado = configMysqlQA.getRepository(KbNotasfiscaisAliquotaICMSestaado); 
+		const response = kbNotasFiscaisAliICMSestado.findOneBy({
+			uf_destino : 'SP',
+			uf_origem : 'ES'
+		}); 
+
+		expect((await response).aliquota).toEqual(12);
+
 	});
 });
