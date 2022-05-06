@@ -16,7 +16,6 @@ export class TaxationIssuerKabumOrder implements TaxationInterface {
 			DISP_LEG : "",
 			ALIQ : 2,
 			CODIGO : "49" 
-
 		}
 	}
 
@@ -37,6 +36,5 @@ export class TaxationIssuerKabumOrder implements TaxationInterface {
 			ALIQ : 0,
 			FCP : 0 
 		}
-		
 	}
 }

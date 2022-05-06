@@ -1,4 +1,4 @@
-import {InvoicyResponse} from "src/V1/domain/adapter/InvoicyResponse";
+import {InvoicyResponse} from "./InvoicyResponse";
 
 export class ResponseInvoicyStub {
 	static respota() : InvoicyResponse {
