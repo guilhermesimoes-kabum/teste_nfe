@@ -1,11 +1,18 @@
-import {COFINS, ICMS, ICMS_UFDEST, PIS, TaxationInterface} from "src/V1/domain/interface/TaxationInterface";
+import {TaxationInterface, ICMS, PIS, COFINS, ICMS_UFDEST} from "../../domain/interface/TaxationInterface";
+import {KbNotasfiscaisAliquotaICMSestaado} from "./entities/KbNotasfiscaisAliquotaICMSestado";
 
 export class TaxationIssuerKabumOrder implements TaxationInterface {
 	getICMS() : ICMS {
+
+		const icmsAliq = KbNotasfiscaisAliquotaICMSestaado.findOneBy({
+			uf_origem : "ES", 
+			uf_destino : "SP"
+		}); 
+
 		return {
 			PERC_RED_BC : 0,
 			CODIGO : "00",
-			ALIQ : 12,
+			ALIQ : icmsAliq,
 			FCP : 0
 		}
 	}
