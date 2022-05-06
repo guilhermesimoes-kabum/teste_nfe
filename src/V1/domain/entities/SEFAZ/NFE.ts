@@ -1,11 +1,10 @@
-import {ParametersToIssuer} from "src/V1/shared/parametersToIssuer.interface";
+import {ParametersToIssuer} from "../../interface/parametersToIssuer.interface";
 import {TaxationInterface} from "../../interface/TaxationInterface";
-import {Taxation} from "../taxation";
-import {det} from "./det";
-import {emit} from "./emit";
-import {ide} from "./ide";
-import {total} from "./total";
-import {transp} from "./transp";
+import {det} from "./det/det";
+import {emit} from "./emit/emit";
+import {ide} from "./ide/ide";
+import {total} from "./total/total";
+import {transp} from "./transp/transp";
 
 export class NFE {
 
