@@ -1,5 +1,3 @@
-import {Helper} from "../../shared/helper";
-import {ParametersToIssuer} from "src/V1/shared/parametersToIssuer.interface";
 import {cUF} from "./cUF";
 import {cNF} from "./cNF";
 import {natOp} from "./natOp";
@@ -20,7 +18,8 @@ import {indFinal} from "./indFinal";
 import {indPres} from "./indPres";
 import {procEmi} from "./procEmi";
 import {verProc} from "./verProc";
-import {dhSaiEnt} from "./dhSaiEnt";
+import {ParametersToIssuer} from "../../../interface/parametersToIssuer.interface";
+import {Helper} from "../../../helper";
 
 export class ide {
 
