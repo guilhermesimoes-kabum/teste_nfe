@@ -1,0 +1,4 @@
+export declare enum STATUS_CODE {
+    CLIENTE_INEXISTENTE = 1000,
+    RUA_INEXISTENTE = 1000
+}
