@@ -1,7 +1,7 @@
 import {BaseEntity, Column, Entity, PrimaryColumn} from "typeorm";
 
 @Entity('kb_notasfiscais_aliquota_icms_estado')
-export class KbNotasfiscaisAliquotaICMSestaado extends BaseEntity {
+export class invoiceAliquotICMSstate extends BaseEntity {
 
 	@PrimaryColumn()
 	codigo : number;

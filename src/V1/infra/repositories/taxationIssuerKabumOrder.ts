@@ -1,12 +1,12 @@
 import {TaxationInterface, ICMS, PIS, COFINS, ICMS_UFDEST} from "../../domain/interface/TaxationInterface";
-import {KbNotasfiscaisAliquotaICMSestaado} from "./entities/KbNotasfiscaisAliquotaICMSestado";
+import {invoiceAliquotICMSstate} from "./entities/KbNotasfiscaisAliquotaICMSestado";
 
 export class TaxationIssuerKabumOrder implements TaxationInterface {
 	getICMS() : ICMS {
 
-		const icmsAliq = KbNotasfiscaisAliquotaICMSestaado.findOneBy({
-			uf_origem : "ES", 
-			uf_destino : "SP"
+		const icmsAliq = invoiceAliquotICMSstate.findOneBy({
+			stateOfOrigin : "ES", 
+			destinationState : "SP"
 		}); 
 
 		return {
