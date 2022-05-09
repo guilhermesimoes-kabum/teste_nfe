@@ -3,15 +3,15 @@ import {BaseEntity, Column, Entity, PrimaryColumn} from "typeorm";
 @Entity('kb_notasfiscais_aliquota_icms_estado')
 export class invoiceAliquotICMSstate extends BaseEntity {
 
-	@PrimaryColumn()
-	codigo : number;
+	@PrimaryColumn("codigo")
+	code: number;
 
-	@Column()
-	uf_origem : string;
+	@Column("uf_origem ")
+	stateOfOrigin: string;
 
-	@Column()
-	uf_destino : string;
+	@Column("uf_destino")
+	destinationState: string;
 
-	@Column()
-	aliquota : number;
+	@Column("aliquota")
+	aliquot: number;
 }
