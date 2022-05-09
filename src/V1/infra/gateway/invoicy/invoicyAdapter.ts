@@ -6,6 +6,11 @@ import {InvoicyResponse} from "./InvoicyResponse";
 export class InvoicyAdapter {
 
 	output(invoicyResponse : InvoicyResponse) : ResponseIssuer {
+		//ever translate status code to exceptions ....  
+		if(invoicyResponse.Situacao.SitCodigo != 100 && invoicyResponse.Situacao.SitCodigo != 135) {
+			this.fixCodeReturn(invoicyResponse.Situacao.SitCodigo);
+		}
+
 		return {
 			xml_link : invoicyResponse.DocXMLDownload,
 			pdf_link : invoicyResponse.DocPDFDownload,
@@ -42,5 +47,21 @@ export class InvoicyAdapter {
 				verProc_ide : invoice.ide.verProc
 			}
 		}
+	}
+
+	fixCodeReturn(code : number) {
+		const objCodes = {
+			102 : new Error(),
+			105 : new Error("Pending document"),
+			106 : new Error("Not included in the SEFAZ database"),
+			108 : new Error("Contingency"),
+			112: new Error("Rejected"),
+			113: new Error("Temporary"),
+			539: new Error("Duplicated"),
+			500 : new Error("Unknown error")
+		}
+
+		const exception = objCodes[code] || objCodes[500];
+		throw exception;
 	}
 }
