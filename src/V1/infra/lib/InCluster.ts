@@ -1,5 +1,5 @@
-import cluster from 'node:cluster';
-import * as os from 'node:os';
+const cluster = require('cluster');
+const os = require('os')
 
 export function inCluster(callback: Function, workers? : number) {
 	if(cluster.isPrimary) {
