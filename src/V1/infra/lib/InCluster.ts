@@ -13,13 +13,8 @@ export function inCluster(callback: Function, workers? : number) {
 		const cpus = os.cpus().length;
 		if(workers == null || workers > cpus) workers = cpus;
 
-
 		for(let i = 0; i < workers; i++) cluster.fork(); 
 		
-		cluster.on('online', function (worker) {
-			console.log(`Worker ${worker.process.pid} is online`)
-		}); 
-
 		cluster.on('exit', (worker, code, signal) => {
 			console.log(`worker ${worker.process.pid} died. Restarting`); 
 			cluster.fork(); 
