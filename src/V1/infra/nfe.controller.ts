@@ -2,7 +2,6 @@ import {Body, Controller, HttpException, HttpStatus, Post} from "@nestjs/common"
 import {ParametersToIssuer} from "../domain/interface/parametersToIssuer.interface";
 import {ResponseIssuer} from "../domain/interface/responseIssuer";
 import {Facade} from "./facade";
-import {InCluster} from "./lib/InCluster";
 
 @Controller('nfe')
 export class NFeController {
