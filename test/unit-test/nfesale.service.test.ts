@@ -43,7 +43,7 @@ describe('NFeSaleService', () => {
 	});
 
 	describe('NFeSalesService', () => {
-		it('service is defined', () => {
+		test('service is defined', () => {
 			expect(service).toBeDefined();
 		});
 
